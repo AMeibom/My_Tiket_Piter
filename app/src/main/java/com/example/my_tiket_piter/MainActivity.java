@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText ticketNumberIn; // поле ввода номера билета
     private Button button; // кнопка обработки информации
     private TextView ticketInfoOut; // поле вывода результирующей информации
+    private TextView  ticketInfoOut2;// поле вывода результирующей информации
 
     // создание поля для алгоритма
     private String ticketNumber = ""; // переменная для записи входного значения
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ticketNumberIn = findViewById(R.id.ticketNumberIn); // поле ввода
         button = findViewById(R.id.button); // кнопка обработки
         ticketInfoOut = findViewById(R.id.ticketInfoOut); // поле вывода
+        ticketInfoOut2 = findViewById(R.id.ticketInfoOut2);
 
         // выполнение действий при нажании кнопки
         button.setOnClickListener(listener); // обработка нажатия кнопки
@@ -44,10 +46,16 @@ public class MainActivity extends AppCompatActivity {
             ticketNumber = ticketNumberIn.getText().toString();
 
             // использование алгоритма для определения счастливого билета
-            if(algoritm.isHappyTicketV2(ticketNumber)) { // если номер билета счастливый, то об этом выводится информация на экран
-                ticketInfoOut.setText("Данный номер билета счастливый ");
+            if(algoritm.isHappyTicketV1(ticketNumber)) { // если номер билета счастливый, то об этом выводится информация на экран
+                ticketInfoOut.setText("По системе №1 этот номер билета счастливый!!!");
             } else { // иначе, производится поиск данного билета с последующим выводом на экран
-                ticketInfoOut.setText("Данный номер билета не счастливый, следующим счатливым номером является "
+                ticketInfoOut.setText("По системе №1 этот номер билета не счастливый, следующим счатливым номером является "
+                        + algoritm.getLuckyTicket(ticketNumber));
+            }
+            if(algoritm.isHappyTicketV2(ticketNumber)) { // если номер билета счастливый, то об этом выводится информация на экран
+                ticketInfoOut2.setText("По системе №2 этот номер билета счастливый!!!");
+            } else { // иначе, производится поиск данного билета с последующим выводом на экран
+                ticketInfoOut2.setText("По системе №2 этот номер билета не счастливый, следующим счатливым номером является "
                         + algoritm.getLuckyTicket(ticketNumber));
             }
         }

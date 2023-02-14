@@ -7,7 +7,7 @@ public class Algoritm_Piter {
     // метод определения следующего счастливого билета
     public int getLuckyTicket(String input) {
         int inputInt = Integer.parseInt(input);// конвертирование данных из String в int
-        while (inputInt<=999_999) {
+        while (true) {
             inputInt++;
             if (isHappyTicketV2(Integer.toString(inputInt))) break;
         }
